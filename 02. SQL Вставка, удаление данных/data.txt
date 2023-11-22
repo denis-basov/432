@@ -23,7 +23,7 @@ CREATE TABLE authors(
 --
 
 -- шаблон вставки
-INSERT INTO table_name (column1, column2, column3, ...)
+INSERT INTO название_таблицы (column1, column2, column3, ...)
 VALUES (value1, value2, value3, ...);
 
 -- вставка с указанием имен столбцов
@@ -73,5 +73,10 @@ WHERE first_name = 'Александр';
 DELETE FROM authors
 WHERE id=1 OR id=5;
 
+-- удаляем студентов с именем Геннадий И возрастом 19
+DELETE FROM students
+WHERE name='Геннадий' AND age=19;
+
 -- удаление ВСЕХ строк из таблицы
 DELETE FROM students;
+
