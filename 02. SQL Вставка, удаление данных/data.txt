@@ -1,0 +1,77 @@
+-- создание таблиц
+CREATE TABLE students(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    group_number INT NOT NULL,
+    course INT DEFAULT 1,
+    age INT NOT NULL,
+    scholarship_amount DOUBLE DEFAULT 0,
+    faculty VARCHAR(255) NOT NULL,
+    add_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE authors(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    age INT
+);
+
+--
+-- вставка строк в таблицы
+--
+
+-- шаблон вставки
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+-- вставка с указанием имен столбцов
+INSERT INTO authors (first_name, last_name, age)
+VALUES ('Иван', 'Бунин', 22);
+
+INSERT INTO authors (first_name, last_name, age)
+VALUES ('Александр', 'Пушкин', 33);
+
+-- вставка нескольких строк за один запрос
+INSERT INTO authors (first_name, last_name, age)
+VALUES ('Лев', 'Толстой', 44),
+       ('Сергей', 'Есенин', 26),
+       ('Анна', 'Ахматова', 18);
+
+-- вставка строк без указания названий столбцов (заполняете все столбцы)
+INSERT INTO authors
+VALUES (6, 'Александр','Грибоедов', 22);       
+
+INSERT INTO students (first_name, last_name, group_number, age, faculty)
+VALUES ('Иван', 'Иванов', 456, 15, 'Экономический');
+
+INSERT INTO students (`first_name`,`last_name`,`group_number`,`course`,`age`,`scholarship_amount`,`faculty`, `add_date`)
+VALUES ('Сергей', 'Петров', 324, 3, 21, 4521.45, 'Машиностроение', '2023-11-21 10:00:00');
+
+INSERT INTO students (first_name, last_name, group_number, age, faculty)
+VALUES ('Анна', 'Иванова', 456, 16, 'Экономический'),
+	   ('Светлана', 'Петрова', 126, 18, 'Социология'),
+       ('Василий', 'Сидоров', 126, 19, 'Психология');
+
+--
+-- удаление строк из таблицы
+--       
+
+-- синтаксис
+DELETE FROM table_name WHERE condition;
+
+-- удалить автора с ID 3
+DELETE FROM authors
+WHERE id=3;
+
+-- удаляем авторов с именем Александр
+DELETE FROM authors 
+WHERE first_name = 'Александр';
+
+-- удаляем авторов с ID 1 ИЛИ 5
+DELETE FROM authors
+WHERE id=1 OR id=5;
+
+-- удаление ВСЕХ строк из таблицы
+DELETE FROM students;

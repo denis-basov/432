@@ -1,0 +1,42 @@
+# Создание БД
+    CREATE DATABASE название бд;
+    CREATE DATABASE 000_js_shop;
+# Удаление БД
+    DROP DATABASE название бд; 
+    DROP DATABASE 000_js_shop;   
+
+# Создание таблицы
+    CREATE TABLE название таблицы(
+        столбцы таблицы
+    )    
+# Удаление таблицы    
+    DROP TABLE название таблицы;
+    DROP TABLE authors;
+
+# Создание таблицы пример
+CREATE TABLE authors(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    age INT NOT NULL
+    add_date TIMESTAMP DEFAULT NULL
+);    
+
+CREATE TABLE authors(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    add_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);  
+
+CREATE TABLE products(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    price FLOAT NOT NULL,
+    description TEXT,
+    maker VARCHAR(255) NOT NULL,
+    weight FLOAT,
+    qty INT
+);
