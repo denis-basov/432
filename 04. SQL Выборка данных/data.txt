@@ -2,3 +2,25 @@
 -- SELECT - выборка данных
 --
 
+-- синтаксис
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+-- получить имя и фамилию пользователей
+SELECT first_name, last_name
+FROM users;
+
+-- получить ВСЕ данные из таблицы 
+SELECT *
+FROM users;
+
+-- получить имя, фамилию, логин, дату добавления пользователей
+SELECT first_name, last_name, login, add_date
+FROM users;
+
+-- получить имя, фамилию, логин, дату добавления пользователей
+-- у которых ID меньше 5
+SELECT first_name, last_name, login, add_date
+FROM users
+WHERE id < 5;
