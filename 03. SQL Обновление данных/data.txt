@@ -2,3 +2,72 @@
 -- DELETE - удаление строк, таблиц, БД.
 -- UPDATE - обновление данных в таблицах, структуры таблиц.
 -- SELECT - выборка на основе имеющихся данных
+
+--
+-- UPDATE - обновление существующих данных в таблице
+-- 
+
+-- синтаксис команды
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+-- установить размер стипендии 5000 у студента с id 6
+UPDATE students
+SET scholarship_amount = 5000.00
+WHERE id = 6;
+
+-- установить размер стипендии 5678.23 у студента с id 8
+UPDATE students
+SET scholarship_amount = 5678.23
+WHERE id = 8;
+
+-- установить размер стипендии 8453.56 на факультете Социология
+UPDATE students
+SET scholarship_amount = 8453.56
+WHERE faculty = 'Социология';
+
+-- увеличить курс на 1
+UPDATE students
+SET course = course + 1;
+
+-- увеличить курс на 1 но только если курс не равен 6
+UPDATE students
+SET course = course + 1
+WHERE course < 6;
+
+-- увеличить курс на 1 но только если курс не равен 6
+UPDATE students
+SET course = course + 1
+WHERE course != 6;
+
+-- у студентов последнего (6) курса меняем номер курса на текущий год
+-- CURDATE() - получение текущей даты
+-- YEAR() - получение года из даты
+UPDATE students
+SET course = YEAR(CURDATE())
+WHERE course = 6;
+
+-- изменить факультет на 'Биологический' у студентов группы 456
+UPDATE students
+SET faculty = 'Биологический'
+WHERE group_number = 456;
+
+-- изменить факультет на 'Биологический' у студентов группы 456 
+-- и установить размер стипендии 8933.88
+UPDATE students
+SET faculty = 'Биологический', scholarship_amount = 8933.88
+WHERE group_number = 456;
+
+-- увеличить размер стипендии на 1000 у студентов возрастом менее 20 лет
+-- на факультета Социология 
+-- возраст < 20 И факультет = Социология
+UPDATE students
+SET scholarship_amount = scholarship_amount + 1000
+WHERE age < 20 AND faculty = 'Социология';
+
+-- увеличить размер стипендии на 1000 у студентов, которые возрастом менее 20 лет
+-- или учатся на факультете Социология 
+UPDATE students
+SET scholarship_amount = scholarship_amount + 1000
+WHERE age < 20 OR faculty = 'Социология';
