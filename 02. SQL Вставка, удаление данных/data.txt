@@ -80,3 +80,6 @@ WHERE name='Геннадий' AND age=19;
 -- удаление ВСЕХ строк из таблицы
 DELETE FROM students;
 
+-- удалить сотрудников, у которых не установлен план продаж
+DELETE FROM salesreps
+WHERE `QUOTA` IS NULL;
