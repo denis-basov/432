@@ -1,0 +1,149 @@
+
+1. Обновите имя у пользовтеля с id 5. +
+
+UPDATE users
+SET first_name = 'АНДРЕЙ'
+WHERE ID = 5;
+
+2. Обновите емейл у пользователя с id 2. +
+
+UPDATE users
+SET email = 'IRINA@INTERNET.RU'
+WHERE ID = 2;
+
+3. Обновите ссылки на картинки у пользователя с фамилией петров.+
+
+UPDATE users
+SET IMAGE = '/template/images/users/my-picture.jpg'
+WHERE last_name = 'ПЕТРОВ';
+
+4. Обновите пароль у пользователя с логином dergeu111.+
+
+UPDATE users
+SET `password` = '239058yu139rnuv29387ryv92o38y5r209738'
+WHERE login = 'dergeu111';
+
+Ошибка
+Статический анализ:
+
+Найдено 3 ошибок при анализе.
+
+Ожидалось имя переменной. (near ";" at position 56)
+Неожиданный токен. (near "=" at position 27)
+Неожиданный токен. (near "1" at position 29)
+SQL запрос: Копировать
+
+UPDATE users SET_password = 1 WHERE email = dergeu111@;
+
+Ответ MySQL: Документация
+
+#1064 - У вас ошибка в запросе. Изучите документацию по используемой версии MySQL на предмет корректного синтаксиса около '= 1
+WHERE email = dergeu111@' на строке 2
+
+
+5. Обновите логин у пользователя с именем Иван И фамилией Петров.+
+
+UPDATE users 
+SET login = 'PETROVICH' 
+WHERE first_name ='ИВАН' AND last_name ='ПЕТРОВ';
+
+Ошибка
+SQL запрос: Копировать
+
+
+UPDATE users
+SET login = 'PETROVICH'
+WHERE first_name ='ИВАН', last_name ='ПЕТРОВ';
+Ответ MySQL: Документация
+
+#1064 - У вас ошибка в запросе. Изучите документацию по используемой
+ версии MySQL на предмет корректного синтаксиса около ' last_name ='ПЕТРОВ'' на строке 3
+
+
+6. У пользователя с логином Ivan установить дату регистрации 
+ (add_date) в значение даты обновления (update_date).+
+
+UPDATE users
+SET `add_date`= `update_date`
+WHERE login = 'IVAN';
+
+Там всё обнулилось! Я не понял как делать !!!
+
+
+7. Увеличьте на 5 значение ID у пользователя с логином aleksPetrov.+
+
+UPDATE users
+SET id = id + 5 
+WHERE login = 'aleksPetrov';
+ 
+УВЕЛИЧИЛСЯ БЫЛ 6 СТАЛ 11
+
+Выборка данных из таблийы users
+
+1. Получите имя, фамилию, емейл
+
+SELECT `first_name`,`last_name`,`email`
+FROM users;
+
+2. Получите все столбцы и строки из таблицы
+
+SELECT *
+FROM users;
+
+3. Получите id, логин, пароль, даты добавления и обновления
+
+SELECT id, login, password, add_date, update_date
+FROM users;
+
+4. Получите всех пользователей по фамилии Петров
+
+SELECT *
+FROM users
+WHERE last_name ='Петров';
+
+5. Получите всех пользователей с id меньше 3
+
+SELECT *
+FROM users
+WHERE ID < 3;
+
+6*. Получите всех пользователей, которые зарегистрировались в 2023 году.
+
+SELECT *
+FROM users
+WHERE YEAR(add_date) = 2023;
+ 
+не получилось, пустой запрос!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

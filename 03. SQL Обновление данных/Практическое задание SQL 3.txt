@@ -17,3 +17,17 @@
 4. Получите всех пользователей по фамилии Петров.
 5. Получите всех пользователей с ID меньше 3.
 6*. Получите всех пользователей, которые зарегистрировались в 2023 году.
+
+-- 1
+SELECT *
+FROM users
+WHERE YEAR(add_date) = 2023;
+
+-- 2
+SELECT *
+FROM users
+WERE extract(YEAR FROM add_date) = 2023;
+
+-- 3
+SELECT * FROM `users`
+WHERE `add_date` >= '2023-01-01 00:00:00' AND `add_date` < '2024-01-01 00:00:00';
