@@ -75,3 +75,28 @@ WHERE authors.id = author_id;
 -- получить уникальные имена авторов в таблице
 SELECT DISTINCT first_name
 FROM authors;
+
+--
+-- БД SHOP
+--
+
+-- получить клиентов с кредитным лимитом больше 35000
+SELECT `COMPANY`,`CUST_REP`,`CREDIT_LIMIT`
+FROM customers
+WHERE CREDIT_LIMIT > 35000;
+
+-- получить клиентов, у которых менеджер 103
+SELECT `COMPANY`,`CUST_REP`,`CREDIT_LIMIT`
+FROM customers
+WHERE `CUST_REP` = 103;
+
+-- получить заказы, совершенные в 2007 году и ранее
+SELECT `ORDER_NUM`,`ORDER_DATE`,`QTY`,`AMOUNT`
+FROM orders
+WHERE `ORDER_DATE` < '2008-01-01';
+
+-- получить заказы позднее 1 января 2008 года И кол-вом товара более 3 штук
+SELECT `ORDER_NUM`,`ORDER_DATE`,`QTY`,`AMOUNT`
+FROM orders
+WHERE `ORDER_DATE` > '2008-01-01' AND `QTY` > 3;
+
