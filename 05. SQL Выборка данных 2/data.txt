@@ -1,0 +1,142 @@
+--
+-- SELECT - выборка данных
+-- https://oracleplsql.ru/
+-- AND - && все части выражения должны быть истинны
+-- OR - ||
+-- Boole Математик, в честь которого назван тип данных 
+-- Boolean - всего 2 значения ИСТИНА, ЛОЖЬ (true, false)
+
+-- выборка по региону
+SELECT `OFFICE`,`CITY`,`REGION`,`SALES`
+FROM offices
+WHERE REGION = 'Western';
+
+-- выборка по кредитному лимиту
+SELECT `COMPANY`,`CREDIT_LIMIT`
+FROM customers
+WHERE `CREDIT_LIMIT` = 50000;
+
+-- получить средние продажи по офисам
+SELECT AVG(SALES) 
+FROM offices;
+
+-- получить офисы, у которых продажи более 500000
+SELECT `OFFICE`,`CITY`,`REGION`,`TARGET`,`SALES`
+FROM offices
+WHERE `SALES` > 500000;
+
+-- получить офисы, у которых продажи более 500000 
+-- и регион 'Eastern'
+SELECT `OFFICE`,`CITY`,`REGION`,`TARGET`,`SALES`
+FROM offices
+WHERE `SALES` > 500000 AND `REGION` = 'Eastern';
+
+-- получить данные на сколько выполнен план по продажам у сотрудников
+SELECT `NAME`,`AGE`,`TITLE`,`QUOTA`,`SALES`, (`SALES`-`QUOTA`)
+FROM salesreps;
+
+SELECT `NAME`,`AGE`,`TITLE`,`QUOTA`,`SALES`, (`SALES`-`QUOTA`) AS target
+FROM salesreps
+ORDER BY target DESC;
+
+-- получить общую сумму по каждому товару на складе
+SELECT `DESCRIPTION`,`PRICE`,`QTY_ON_HAND`, `PRICE`*`QTY_ON_HAND` AS total
+FROM products;
+
+-- получить общую сумму по каждому товару на складе c сортировкой по уменьшению итоговой стоимости
+SELECT `DESCRIPTION`,`PRICE`,`QTY_ON_HAND`, `PRICE`*`QTY_ON_HAND` AS total
+FROM products
+ORDER BY total DESC;
+
+-- получить список производителей товаров
+SELECT DISTINCT `MFR_ID`
+FROM products;
+
+-- получить информацию по плану продаж в каждом офисе, увеличенную на 10%
+SELECT `CITY`,`REGION`,`TARGET`, (`TARGET` * 1.1) AS new_target
+FROM offices;
+
+-- задаем статические столбцы
+SELECT 'Производитель', `MFR_ID`, 'Продукт', `PRODUCT_ID`, 'Описание продукта', `DESCRIPTION`
+FROM products;
+
+-- получить заказы, оформленные после 1 февраля 2008 года
+SELECT `ORDER_NUM`,`ORDER_DATE`,`QTY`,`AMOUNT`
+FROM orders
+WHERE `ORDER_DATE` > '2008-02-01';
+
+-- получить сотрудников, которые выполнили план продаж
+SELECT `NAME`,`AGE`,`TITLE`,`QUOTA`,`SALES`
+FROM salesreps
+WHERE `SALES` >= `QUOTA`;
+
+-- получить сотрудников, которые перевыполнили план продаж более чем на 120%
+SELECT `NAME`,`AGE`,`TITLE`,`QUOTA`,`SALES`
+FROM salesreps
+WHERE `SALES` >= (`QUOTA` * 1.2);
+
+-- получить сотрудников, которые работают в офисе 12
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`SALES`, `REP_OFFICE`
+FROM salesreps
+WHERE `REP_OFFICE` = 12;
+
+-- получить сотрудников, которые НЕ работают в офисе 12
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`SALES`, `REP_OFFICE`
+FROM salesreps
+WHERE `REP_OFFICE` != 12;
+
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`SALES`, `REP_OFFICE`
+FROM salesreps
+WHERE `REP_OFFICE` <> 12;
+
+-- получить сотрудников, пришедших в компанию с 1 мая 2005 до 1 октября 2007 включительно
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`HIRE_DATE`,`SALES`
+FROM salesreps
+WHERE `HIRE_DATE` >= '2005-05-01' AND `HIRE_DATE` <= '2007-10-01';
+
+-- BETWEEN -- AND
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`HIRE_DATE`,`SALES`
+FROM salesreps
+WHERE `HIRE_DATE` BETWEEN '2005-05-01' AND '2007-10-01';
+
+-- получить сотрудников возрастом от 30 до 50
+SELECT `NAME`,`AGE`,`TITLE`,`SALES`
+FROM salesreps
+WHERE `AGE` BETWEEN 30 AND 50;
+
+-- получить клиентов, у которых кредитный лимит от 30000 до 45000
+SELECT `CUST_NUM`,`COMPANY`,`CREDIT_LIMIT`
+FROM customers
+WHERE `CREDIT_LIMIT` BETWEEN 30000 AND 45000;
+
+-- получить клиентов, у которых кредитный лимит до 30000 или более 45000
+SELECT `CUST_NUM`,`COMPANY`,`CREDIT_LIMIT`
+FROM customers
+WHERE `CREDIT_LIMIT` NOT BETWEEN 30000 AND 45000;
+
+-- получить клиентов, у которых кредитный лимит до 30000 или более 50000
+SELECT `CUST_NUM`,`COMPANY`,`CREDIT_LIMIT`
+FROM customers
+WHERE `CREDIT_LIMIT` NOT BETWEEN 30000 AND 50000;
+
+-- получить сотрудников, возрастом до 30 или более 50
+SELECT `NAME`,`AGE`,`TITLE`,`SALES` 
+FROM salesreps 
+WHERE `AGE` NOT BETWEEN 30 AND 50;
+
+-- получить сотрудников с номерами 103, 106, 108, 110
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`SALES` 
+FROM salesreps 
+WHERE `EMPL_NUM` = 103 
+	OR `EMPL_NUM` = 106 
+    OR `EMPL_NUM` = 108 
+    OR `EMPL_NUM` = 110;
+
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`SALES` 
+FROM salesreps 
+WHERE `EMPL_NUM` IN(103, 106, 108, 110);  
+
+-- получить всех сотрудников, только не с номерами 103, 106, 108, 110
+SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`SALES` 
+FROM salesreps 
+WHERE `EMPL_NUM` NOT IN(103, 106, 108, 110);

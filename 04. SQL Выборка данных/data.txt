@@ -35,6 +35,15 @@ CREATE TABLE authors(
     last_name VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE books(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+	author_id INT NOT NULL,
+    FOREIGN KEY(author_id) REFERENCES authors(id)
+);
+
+
 INSERT INTO authors(`first_name`, `last_name`)
 VALUES ('Иван','Бунин'),
 ('Лев','Толстой'),
@@ -44,14 +53,6 @@ VALUES ('Иван','Бунин'),
 ('Александр','Грибоедов'),
 ('Александр','Блок'),
 ('Петр','Чайковский');
-
-CREATE TABLE books(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-	author_id INT NOT NULL,
-    FOREIGN KEY(author_id) REFERENCES authors(id)
-);
 
 INSERT INTO books(`title`,`description`,`author_id`)
 	VALUES('Господин из Сан-Франциско','Рассказ Ивана Алексеевича Бунина. Представляет собой притчу, повествующую о ничтожности богатства и власти перед лицом смерти.', 1),
@@ -100,3 +101,9 @@ SELECT `ORDER_NUM`,`ORDER_DATE`,`QTY`,`AMOUNT`
 FROM orders
 WHERE `ORDER_DATE` > '2008-01-01' AND `QTY` > 3;
 
+
+-- makers - производители
+-- products - товары
+
+FOREIGN KEY('внешний ключ таблицы товары') REFERENCES makers('первичный ключ таблицы производители')
+FOREIGN KEY(maker_id) REFERENCES makers(id)
