@@ -1,0 +1,21 @@
+1. Убедиться, что исходный код для получения данных о сотруднике выполняется
+и данные выводятся.
+2. Выведите в документ название компании (COMPANY) под ID 2106 из табл customers.
+3. Выведите в документ NAME, AGE, TITLE, HIRE_DATE, SALES сотрудника с ID 105
+
+4. Дан запрос:
+    SELECT NAME,AGE,TITLE, salesreps.SALES, CITY, REGION
+    FROM salesreps, offices
+    WHERE REP_OFFICE = OFFICE
+    AND EMPL_NUM = 108;
+Выведите полученную информацию в документ.
+
+5*. Дан запрос:
+    SELECT ORDER_NUM, ORDER_DATE, AMOUNT, COMPANY, DESCRIPTION, PRICE, NAME, TITLE, CITY, REGION
+    FROM orders, customers, salesreps, products, offices
+    WHERE CUST = CUST_NUM
+        AND REP = EMPL_NUM
+        AND MFR = MFR_ID
+        AND PRODUCT = PRODUCT_ID
+        AND REP_OFFICE = OFFICE;    
+Выведите полученную информацию в документ.

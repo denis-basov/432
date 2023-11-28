@@ -140,3 +140,110 @@ WHERE `EMPL_NUM` IN(103, 106, 108, 110);
 SELECT `EMPL_NUM`,`NAME`,`AGE`,`TITLE`,`SALES` 
 FROM salesreps 
 WHERE `EMPL_NUM` NOT IN(103, 106, 108, 110);
+
+
+--
+-- сортировка
+-- 
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+-- сортировка по названию компании по возрастанию
+SELECT `COMPANY`,`CREDIT_LIMIT`
+FROM customers
+ORDER BY `COMPANY`;
+
+-- сортировка по названию компании по убыванию
+SELECT `COMPANY`,`CREDIT_LIMIT`
+FROM customers
+ORDER BY `COMPANY` DESC;
+
+-- сортировка по кредитному лимиту по возрастанию
+SELECT `COMPANY`,`CREDIT_LIMIT`
+FROM customers
+ORDER BY `CREDIT_LIMIT`;
+
+-- сортировка по кредитному лимиту по убыванию
+SELECT `COMPANY`,`CREDIT_LIMIT`
+FROM customers
+ORDER BY `CREDIT_LIMIT` DESC;
+
+-- сортировка по стоимости заказа
+SELECT `ORDER_NUM`,`ORDER_DATE`,`QTY`,`AMOUNT`
+FROM orders
+ORDER BY `AMOUNT` DESC;
+
+-- сортировка сотрудников по квоте
+SELECT `NAME`,`AGE`,`TITLE`,`QUOTA`,`SALES`
+FROM salesreps
+ORDER BY `QUOTA` DESC;
+
+-- сортировка сотрудников по квоте и по продажам
+SELECT `NAME`,`AGE`,`TITLE`,`QUOTA`,`SALES`
+FROM salesreps
+ORDER BY `QUOTA` DESC, `SALES` DESC;
+
+-- сортировка с условием
+SELECT `NAME`,`AGE`,`TITLE`,`QUOTA`,`SALES`
+FROM salesreps
+WHERE `AGE` > 29
+ORDER BY `QUOTA` DESC, `SALES` DESC;
+
+--
+-- Многотабличные запросы
+--
+
+-- получить список сотрудников, а также городов и регионов, в которых работаю сотрудники
+SELECT `NAME`,`AGE`,`TITLE`, salesreps.`SALES`, CITY, REGION
+FROM salesreps, offices
+WHERE REP_OFFICE = OFFICE;
+
+-- получить офисы, а также имя и должность управляющих этими офисами
+SELECT `CITY`,`REGION`, NAME, TITLE
+FROM offices, salesreps
+WHERE MGR = EMPL_NUM;
+
+-- получить номер, дату заказа, а также название клиента, который заказ оформил
+SELECT `ORDER_NUM`,`ORDER_DATE`, COMPANY, `AMOUNT`
+FROM orders, customers
+WHERE CUST = CUST_NUM;
+
+-- получить номера, даты, стоимость заказов, а также названия клиентов, которые оформили заказ,
+-- имена, должности менеджеров, оформивших заказ, а также описание и цену товаров.
+SELECT ORDER_NUM, ORDER_DATE, AMOUNT, COMPANY, DESCRIPTION, PRICE, NAME, TITLE
+FROM orders, customers, salesreps, products
+WHERE CUST = CUST_NUM
+	AND REP = EMPL_NUM
+    AND MFR = MFR_ID
+    AND PRODUCT = PRODUCT_ID;
+
+-- по уменьшению цены
+SELECT ORDER_NUM, ORDER_DATE, AMOUNT, COMPANY, DESCRIPTION, PRICE, NAME, TITLE
+FROM orders, customers, salesreps, products
+WHERE CUST = CUST_NUM
+	AND REP = EMPL_NUM
+    AND MFR = MFR_ID
+    AND PRODUCT = PRODUCT_ID
+ORDER BY PRICE DESC;
+
+-- добавить к предыдущему запросу информацию об офисе, за которым закреплен сотрудник
+SELECT ORDER_NUM, ORDER_DATE, AMOUNT, COMPANY, DESCRIPTION, PRICE, NAME, TITLE, CITY, REGION
+FROM orders, customers, salesreps, products, offices
+WHERE CUST = CUST_NUM
+	AND REP = EMPL_NUM
+    AND MFR = MFR_ID
+    AND PRODUCT = PRODUCT_ID
+    AND REP_OFFICE = OFFICE;
+
+-- добавить условие, выборка заказов только по региону Western
+SELECT ORDER_NUM, ORDER_DATE, AMOUNT, COMPANY, DESCRIPTION, PRICE, NAME, TITLE, CITY, REGION
+FROM orders, customers, salesreps, products, offices
+WHERE CUST = CUST_NUM
+	AND REP = EMPL_NUM
+    AND MFR = MFR_ID
+    AND PRODUCT = PRODUCT_ID
+    AND REP_OFFICE = OFFICE
+    AND REGION = 'Western';
+
