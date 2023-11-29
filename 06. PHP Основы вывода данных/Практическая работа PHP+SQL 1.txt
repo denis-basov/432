@@ -19,3 +19,161 @@
         AND PRODUCT = PRODUCT_ID
         AND REP_OFFICE = OFFICE;    
 Выведите полученную информацию в документ.
+
+
+-- 2
+<?php
+
+// переменные для подключения к БД
+$dsn = 'mysql:dbname=f0727777_my_first_db;host=localhost';
+$user = 'f0727777_super_admin';
+$password = '123456789';
+
+// создаем подключение к БД
+$pdo = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+
+// тестируем вывод подключения к БД
+// var_dump($pdo);
+
+
+$sql = 'SELECT COMPANY 
+        FROM `customers`
+        WHERE `CUST_NUM` = 2106;';
+
+$result = $pdo->query($sql)->fetch();
+
+echo '<pre>';
+print_r($result);
+
+echo "Название компании: $result[COMPANY].";
+
+-- 3
+<?php
+
+// переменные для подключения к БД
+$dsn = 'mysql:dbname=f0727777_my_first_db;host=localhost';
+$user = 'f0727777_super_admin';
+$password = '123456789';
+
+// создаем подключение к БД
+$pdo = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+
+// тестируем вывод подключения к БД
+// var_dump($pdo);
+
+
+$sql = 'SELECT `NAME`,`AGE`,`TITLE`,`HIRE_DATE`,`SALES` 
+        FROM `salesreps` 
+        WHERE `EMPL_NUM` = 105;';
+
+$result = $pdo->query($sql)->fetch();
+
+// тестовый вывод для просмотра того, что получили из БД
+//echo '<pre>';
+//print_r($result);
+
+echo "Имя: $result[NAME]. Возраст: $result[AGE]. Должность: $result[TITLE]. 
+Дата начала работы: $result[HIRE_DATE]. Продажи за месяц: $ $result[SALES] .";
+
+-- 4
+<?php
+
+// переменные для подключения к БД
+$dsn = 'mysql:dbname=f0727777_my_first_db;host=localhost';
+$user = 'f0727777_super_admin';
+$password = '123456789';
+
+// создаем подключение к БД
+$pdo = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+
+// тестируем вывод подключения к БД
+// var_dump($pdo);
+
+
+$sql = 'SELECT NAME, AGE, TITLE, salesreps.SALES, CITY, REGION
+    FROM salesreps, offices
+    WHERE REP_OFFICE = OFFICE
+    AND EMPL_NUM = 108;';
+
+$result = $pdo->query($sql)->fetch();
+
+// тестовый вывод для просмотра того, что получили из БД
+// echo '<pre>';
+// print_r($result);
+
+echo "Имя: $result[NAME]. Возраст: $result[AGE]. Должность: $result[TITLE].
+Продажи за месяц: $ $result[SALES]. Город проживания: $result[CITY]. Регион: $result[REGION].";
+
+-- 5
+<?php
+
+// переменные для подключения к БД
+$dsn = 'mysql:dbname=f0727777_my_first_db;host=localhost';
+$user = 'f0727777_super_admin';
+$password = '123456789';
+
+// создаем подключение к БД
+$pdo = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+
+// тестируем вывод подключения к БД
+// var_dump($pdo);
+
+
+$sql = 'SELECT ORDER_NUM, ORDER_DATE, AMOUNT, COMPANY, DESCRIPTION, PRICE, NAME, TITLE, CITY, REGION
+        FROM orders, customers, salesreps, products, offices
+        WHERE CUST = CUST_NUM
+            AND REP = EMPL_NUM
+            AND MFR = MFR_ID
+            AND PRODUCT = PRODUCT_ID
+            AND REP_OFFICE = OFFICE;';
+
+$result = $pdo->query($sql)->fetchAll();
+
+// тестовый вывод для просмотра того, что получили из БД
+// echo '<pre>';
+// print_r($result);
+
+foreach($result as $row){
+    echo "<h1>Номер заказа: $row[ORDER_NUM], Дата: $row[ORDER_DATE], Стоимость: $row[AMOUNT], Компания: $row[COMPANY],
+    Название товара: $row[DESCRIPTION], Цена: $row[PRICE], Имя сотрудника: $row[NAME], 
+    Должность: $row[TITLE], Город: $row[CITY], Регион: $row[REGION].</h1>";
+}
+
+
+-- 5.1
+<?php
+
+// переменные для подключения к БД
+$dsn = 'mysql:dbname=f0727777_my_first_db;host=localhost';
+$user = 'f0727777_super_admin';
+$password = '123456789';
+
+// создаем подключение к БД
+$pdo = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+
+// тестируем вывод подключения к БД
+// var_dump($pdo);
+
+
+$sql = "SELECT ORDER_NUM, ORDER_DATE, AMOUNT, COMPANY, DESCRIPTION, PRICE, NAME, TITLE, CITY, REGION
+        FROM orders, customers, salesreps, products, offices
+        WHERE CUST = CUST_NUM
+            AND REP = EMPL_NUM
+            AND MFR = MFR_ID
+            AND PRODUCT = PRODUCT_ID
+            AND REP_OFFICE = OFFICE
+            AND REGION = 'Eastern'
+            AND CITY = 'Atlanta';";
+
+$result = $pdo->query($sql)->fetchAll();
+
+// тестовый вывод для просмотра того, что получили из БД
+// echo '<pre>';
+// print_r($result);
+
+foreach($result as $key => $row){
+    $key++;// увеличиваем значение ключа на 1
+    echo "<h1 style='border: 2px solid blue'>Номер строки: $key<br> Номер заказа: $row[ORDER_NUM], Дата: $row[ORDER_DATE], Стоимость: $row[AMOUNT], Компания: $row[COMPANY],
+    Название товара: $row[DESCRIPTION], Цена: $row[PRICE], Имя сотрудника: $row[NAME], 
+    Должность: $row[TITLE], Город: $row[CITY], Регион: $row[REGION].</h1>";
+}
