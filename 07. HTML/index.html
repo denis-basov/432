@@ -19,6 +19,7 @@
       Lorem ipsum dolor, <b>sit amet consectetur adipisicing elit</b>. Officia nesciunt est veniam velit, totam illo consequatur atque <i>fuga a expedita laboriosam</i> ea suscipit vero fugiat
       sapiente quasi doloremque. Iste, modi?
     </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, eum.</p>
 
     <!-- ссылки -->
     <a href="https://unsplash.com/" target="_blank">Ссылка на unsplash</a>
@@ -26,6 +27,122 @@
     <a href="HTML 2.1 - 2.3.pdf" target="_blank">Презентация HTML</a>
     <a href="395_books.sql" target="_blank">Ссылка на БД</a>
     <br />
+
+    <!-- списки -->
+    <!-- ненумерованный список -->
+    <ul>
+      <li>Пермь</li>
+      <li>Самара</li>
+      <li>Краснодар</li>
+      <li>Владивосток</li>
+    </ul>
+
+    <!-- нумерованый список -->
+    <ol type="I">
+      <li>Апельсин</li>
+      <li>Яблоко</li>
+      <li>Киви</li>
+      <li>Абрикос</li>
+      <li>Ананас</li>
+    </ol>
+
+    <!-- DIV - элемент для разделения контента -->
+    <div class="students" style="display: flex; gap: 20px">
+      <div class="student">
+        <img
+          src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Иван Иванов"
+          width="200"
+        />
+        <h2>Имя: Иван</h2>
+        <h3>Фамилия: Иванов</h3>
+        <p>Возраст: 33</p>
+        <p>Хобби: спать</p>
+      </div>
+      <div class="student">
+        <img
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Ирина Иванова"
+          width="200"
+        />
+        <h2>Имя: Ирина</h2>
+        <h3>Фамилия: Иванова</h3>
+        <p>Возраст: 13</p>
+        <p>Хобби: готовить еду</p>
+      </div>
+      <div class="student">
+        <img
+          src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Сергей Сидоров"
+          width="200"
+        />
+        <h2>Имя: Сергей</h2>
+        <h3>Фамилия: Сидоров</h3>
+        <p>Возраст: 23</p>
+        <p>Хобби: гулять</p>
+      </div>
+    </div>
+
+    <!-- форма -->
+    <h2>Форма регистрации</h2>
+    <form>
+      <div>
+        <label>Имя:</label>
+        <input type="text" name="first_name" placeholder="Введите имя" required />
+      </div>
+
+      <div>
+        <label>Фамилия:</label>
+        <input type="text" name="last_name" placeholder="Введите фамилию" />
+      </div>
+
+      <div>
+        <label>Логин:</label>
+        <input type="text" name="login" placeholder="Только латинские буквы и цифры" size="30" />
+      </div>
+
+      <div>
+        <label>Электронная почта:</label>
+        <input type="email" name="email" />
+      </div>
+
+      <div>
+        <label>Пароль:</label>
+        <input type="password" name="password" />
+      </div>
+
+      <div>
+        <label>Аватар:</label>
+        <input type="file" name="avatar" />
+      </div>
+
+      <div>
+        <p>Выберите ваш пол:</p>
+        <label>М</label>
+        <input type="radio" name="sex" value="М" />
+
+        <label>Ж</label>
+        <input type="radio" name="sex" value="Ж" />
+      </div>
+
+      <div>
+        <p>Какое ТС у вас есть</p>
+        <input type="checkbox" name="vehicle1" value="Bike" />
+        <label> I have a bike</label><br />
+        <input type="checkbox" name="vehicle2" value="Car" />
+        <label> I have a car</label><br />
+        <input type="checkbox" name="vehicle3" value="Boat" />
+        <label> I have a boat</label><br /><br />
+      </div>
+
+      <div>
+        <label>Укажите информацию о себе:</label><br />
+        <textarea name="message" cols="30" rows="10"></textarea>
+      </div>
+
+      <input type="submit" value="Зарегистрироваться" />
+    </form>
+    <!-- index.html?first_name=Иван&last_name=Иванов -->
 
     <!-- картинки -->
     <img src="img/image-1.jpg" width="300" alt="Пляж" />
