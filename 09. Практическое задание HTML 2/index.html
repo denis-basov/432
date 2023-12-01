@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label>Имя:</label>
+        <input type="text" name="fname" />
+      </div>
+      <div>
+        <label>Фамилия:</label>
+        <input type="text" name="lname" />
+      </div>
+      <div>
+        <label>Емейл:</label>
+        <input type="email" name="email" />
+      </div>
+      <div>
+        <label>Пароль:</label>
+        <input type="password" name="password" />
+      </div>
+      <hr />
+      <div>
+        <p>Выберите вашего питомца:</p>
+        <label>Кот</label>
+        <input type="radio" name="pet" value="cat" />
+
+        <label>Собака</label>
+        <input type="radio" name="pet" value="dog" />
+
+        <label>Питон</label>
+        <input type="radio" name="pet" value="python" />
+
+        <label>Обезьяна</label>
+        <input type="radio" name="pet" value="monkey" />
+      </div>
+      <hr />
+      <div>
+        <p>Какое домашнее животное у вас есть?</p>
+        <input type="checkbox" name="pet1" value="Кошка" />
+        <label> У меня есть Кошка </label><br />
+        <input type="checkbox" name="pet2" value="Собака" />
+        <label> У меня есть Собака</label><br />
+        <input type="checkbox" name="pet3" value="Попугай" />
+        <label> У меня есть Попугай</label><br />
+        <input type="checkbox" name="pet4" value="Обезьяна" />
+        <label> У меня есть Обезьяна</label>
+      </div>
+      <hr />
+
+      <div>
+        <label>Выберите авто:</label>
+        <select name="cars" multiple>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div>
+      <hr />
+      <div>
+        <label>Язык на котором вы хотите видеть сайт:*</label>
+        <select name="lang" class="lang-choise">
+          <option value="">Выбрать</option>
+          <option value="ru">Русский</option>
+          <option value="ua">Украинский</option>
+          <option value="en">Английский</option>
+          <option value="de">Немецкий</option>
+        </select>
+      </div>
+      <hr />
+      <div>
+        <label>О себе:</label><br />
+        <textarea name="message" cols="40" rows="5"></textarea>
+      </div>
+
+      <div>
+        <input type="submit" value="Зарегистрироваться" />
+      </div>
+    </form>
+
+    <div class="pets" style="display: flex">
+      <div class="pet">
+        <img
+          src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=2043&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="cat"
+          width="300"
+        />
+        <h2>cat</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptates laudantium sed consequatur nemo. Est incidunt error ratione nam soluta.</p>
+        <ul>
+          <li>hobby1</li>
+          <li>hobby2</li>
+          <li>hobby3</li>
+        </ul>
+      </div>
+
+      <div class="pet">
+        <img
+          src="https://images.unsplash.com/photo-1538439907460-1596cafd4eff?q=80&w=2056&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="python"
+          width="300"
+        />
+        <h2>python</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptates laudantium sed consequatur nemo. Est incidunt error ratione nam soluta.</p>
+        <ul>
+          <li>hobby1</li>
+          <li>hobby2</li>
+          <li>hobby3</li>
+        </ul>
+      </div>
+
+      <div class="pet">
+        <img
+          src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="fox"
+          width="300"
+        />
+        <h2>fox</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptates laudantium sed consequatur nemo. Est incidunt error ratione nam soluta.</p>
+        <ul>
+          <li>hobby1</li>
+          <li>hobby2</li>
+          <li>hobby3</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
