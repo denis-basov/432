@@ -1,0 +1,82 @@
+/* задаем стили для всех заголовков h1 */
+/* h1 {
+    color: red;
+    background: blueviolet;
+    text-align: center;
+} */
+
+/* задаем стили для всех параграфов */
+/* p {
+    color: brown;
+} */
+
+/* задание стилей по ID */
+/* #super-par {
+    color: darkblue;
+} */
+
+/* задаем стили по названию класса */
+.test-1 {
+    color: cornflowerblue;
+    background: burlywood;
+    border: 4px solid orange;
+    max-width: 600px;
+    /* height: 100px; */
+    /* margin: 20px;
+    margin-right: 50px; */
+    /* margin: 20px 30px 15px 25px; */
+    margin: 20px auto;
+    padding: 15px;
+}
+
+.test-2 {
+    color: rgb(50, 128, 102);
+    background: cyan;
+    border: 6px dotted green;
+    margin: 25px;
+    padding: 10px;
+    width: 600px;
+    /* height: 300px; */
+}
+
+.press-btn {
+    /* border: none; */
+}
+
+/* задаем стили для контейнера со студентами */
+.students {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+
+    background: rgb(200, 225, 247);
+    max-width: 1400px;
+    padding: 20px;
+}
+
+/* стили для каждого блока с одним студентом */
+.students .student {
+    background: blanchedalmond;
+    padding: 10px;
+    /* border: 2px solid rgb(246, 211, 160); */
+    border-radius: 8px;
+}
+
+/* стили для заголовков h2 внутри блоков студентов */
+.students .student h2 {
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.students .student h2 span {
+    color: brown;
+    letter-spacing: 3px;
+}
+
+.students .student h3 {
+    text-align: right;
+    text-decoration: overline;
+    text-transform: lowercase;
+}
