@@ -1,0 +1,140 @@
+html {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.students {
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: aliceblue;
+
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.students .student {
+    background-color: bisque;
+    padding: 15px;
+}
+
+.students img {
+    width: 100%;
+}
+
+.students h2 {
+    font-weight: 600;
+    font-size: 22px;
+    transition: all 0.8s;
+}
+
+.students h2:hover {
+    background-color: rgb(112, 220, 133);
+}
+
+.students h3 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.students p {
+    font-weight: 300;
+}
+
+/* обычные стили элемента */
+.students a {
+    background-color: coral;
+    padding: 10px 20px;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    transition: all 0.5s;
+}
+
+/* стили при наведении мыши на элемент */
+.students a:hover {
+    background-color: rgb(206, 102, 64);
+    color: rgb(201, 247, 210);
+}
+
+
+/* переход */
+.transition {
+    width: 200px;
+    height: 200px;
+    background-color: cornflowerblue;
+    margin: 20px;
+    /* transition: background-color 2s, width 1s, height 5s; */
+    transition: all 1s;
+}
+
+.transition:hover {
+    background-color: rgb(139, 0, 0);
+    width: 400px;
+    height: 100px;
+}
+
+/* анимация */
+.animation {
+    width: 800px;
+    height: 500px;
+    background-color: blue;
+    /* картинка фоном */
+    background-image: url('img/image-1.jpg');
+    /* не повторять картинку */
+    background-repeat: no-repeat;
+    /* размер картинки */
+    background-size: cover;
+
+    /* параметры анимации */
+    animation-name: background-animation;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+/* ключевые точки (кадры) анимации */
+@keyframes background-animation {
+    0% {
+        background-image: url('img/image-1.jpg');
+    }
+
+    25% {
+        background-image: url('img/image-2.jpg');
+    }
+
+    50% {
+        background-image: url('img/image-3.jpg');
+    }
+
+    75% {
+        background-image: url('img/image-2.jpg');
+    }
+
+    100% {
+        background-image: url('img/image-1.jpg');
+    }
+}
+
+
+/* flex */
+.flex-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: cornsilk;
+
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.flex-container div {
+    padding: 20px;
+    background-color: rgb(233, 193, 133);
+    width: 100px;
+}

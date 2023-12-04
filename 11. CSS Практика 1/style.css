@@ -1,0 +1,24 @@
+.pets {
+    max-width: 1200px;
+    padding: 30px;
+    margin: 0 auto;
+    background-color: aliceblue;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pets .pet {
+    background-color: rgb(218, 218, 254);
+    padding: 15px;
+    margin: 15px;
+
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.pets .pet img {
+    width: 100%;
+}
