@@ -17,7 +17,7 @@ let cats = 56;
 let dogs = 74;
 
 let animals = cats + dogs; // 130
-console.log(animals);
+console.log(animals, cats, dogs);
 */
 
 // приоритет операторов
@@ -38,3 +38,19 @@ let cars = 22;
 cars = cars - 5;
 
 console.log(cars);*/
+
+// 1
+let age = 22;
+let firstname = "Александра";
+let lastname = "Синицина";
+let hobby = "дизайн";
+let city = "Москва";
+console.log(age);
+console.log(firstname);
+console.log(lastname);
+console.log(city);
+console.log(hobby);
+let newage = age + 3;
+console.log(newage);
+newage = age - 5;
+console.log(newage);
