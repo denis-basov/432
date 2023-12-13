@@ -142,3 +142,9 @@ for (let cartItem of cart) {
 }
 console.log(str);
 document.write(str);
+
+
+
+// for (let i = 10; i <= 50; i++) {
+//   console.log(i);
+// }
