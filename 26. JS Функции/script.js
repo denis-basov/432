@@ -104,3 +104,4 @@ function makeSumStr(sum) {
   console.log(`Сумма элементов массива numbers: ${sum}`);
 }
 makeSumStr(numbersSum);
+
