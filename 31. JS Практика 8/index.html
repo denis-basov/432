@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Автотестирование</title>
+
+    <!-- добавим стили mocha для отображения результатов -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css" />
+    <!-- добавляем сам фреймворк mocha -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+    <script>
+      // включаем режим тестирования в стиле BDD
+      mocha.setup("bdd");
+    </script>
+    <!-- добавим chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+    <script>
+      // chai предоставляет большое количество функций. Объявим assert глобально
+      let assert = chai.assert;
+    </script>
+  </head>
+  <body>
+    <script>
+      /**
+       * код, который необходимо протестировать
+       *
+       * */
+      //1
+      function makeSum(num1, num2, num3) {
+        // если в переменной num2 НЕ число
+        if (typeof num1 != "number" || typeof num2 != "number" || typeof num3 != "number") {
+          return "Все аргументы должны быть числами";
+        }
+
+        let result = num1 + num2 + num3;
+        result = +result.toFixed(2); // округляем до 2 знаков после запятой. метод возвращает строку, поэтому используем + для перевода в число
+        console.log(result, typeof result);
+
+        return result;
+      }
+
+      //2
+      function getSum(min, max) {
+        // если  числа диапазона равны, то возвращаем 0
+        if (min == max) {
+          //return min;
+          return 0;
+        }
+
+        if (min > max) {
+          return "Начало диапазона больше, чем конец диапазона";
+        }
+
+        let sum = 0;
+        for (let i = min; i <= max; i++) {
+          sum += i;
+        }
+        return sum;
+      }
+    </script>
+
+    <!-- скрипт c автотестами -->
+    <script src="test.js"></script>
+
+    <!-- элемент с id="mocha" будет содержать результаты тестов -->
+    <div id="mocha"></div>
+
+    <!-- запускаем тесты! -->
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

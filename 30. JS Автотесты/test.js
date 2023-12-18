@@ -50,4 +50,7 @@ describe("Тестирование функции sayHello", function () {
   it("Передача в аргумент пустой строки", function () {
     assert.equal(sayHello(""), "Введите имя");
   });
+  it("Передача в аргумент числа", function () {
+    assert.equal(sayHello(7), "Введите строковое значение");
+  });
 });
